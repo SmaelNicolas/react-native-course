@@ -8,29 +8,31 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
+import { Clase3 } from "./Clase-3/Clase3";
 
 export default function App() {
 	return (
-		<View style={styles.container}>
-			<Text>Testing emulator 1</Text>
-			<TouchableOpacity>
-				<Text>Hola</Text>
-			</TouchableOpacity>
-			<Button
-				onPress={() => alert("HOLA 1")}
-				title="Learn More"
-				style={styles.button}
-				accessibilityLabel="Learn more about this purple button"
-			/>
-			<Pressable style={styles.button} onPress={() => alert("HOLA 2")}>
-				<Text style={styles.text}>Button Pressable</Text>
-			</Pressable>
-			<Image
-				source={{ uri: "https://picsum.photos/200/300" }}
-				style={styles.stylesImg}
-			/>
-			<StatusBar style="auto" />
-		</View>
+		<Clase3 />
+		// <View style={styles.container}>
+		// 	<Text>Testing emulator 1</Text>
+		// 	<TouchableOpacity>
+		// 		<Text>Hola</Text>
+		// 	</TouchableOpacity>
+		// 	<Button
+		// 		onPress={() => alert("HOLA 1")}
+		// 		title="Learn More"
+		// 		style={styles.button}
+		// 		accessibilityLabel="Learn more about this purple button"
+		// 	/>
+		// 	<Pressable style={styles.button} onPress={() => alert("HOLA 2")}>
+		// 		<Text style={styles.text}>Button Pressable</Text>
+		// 	</Pressable>
+		// 	<Image
+		// 		source={{ uri: "https://picsum.photos/200/300" }}
+		// 		style={styles.stylesImg}
+		// 	/>
+		// 	<StatusBar style="auto" />
+		// </View>
 	);
 }
 
