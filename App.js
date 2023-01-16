@@ -10,10 +10,12 @@ import {
 } from "react-native";
 import { Clase3 } from "./Clase-3/Clase3";
 import { Clase4 } from "./Clase-4/Clase4";
+import { Clase5 } from "./Clase-5/Clase5";
 
 export default function App() {
 	return (
-		<Clase4 />
+		<Clase5 />
+		// <Clase4 />
 		// <Clase3 />
 		// <View style={styles.container}>
 		// 	<Text>Testing emulator 1</Text>
