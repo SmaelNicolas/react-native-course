@@ -1,70 +1,65 @@
-import { StatusBar } from "expo-status-bar";
-import {
-	Button,
-	Image,
-	Pressable,
-	StyleSheet,
-	Text,
-	TouchableOpacity,
-	View,
-} from "react-native";
-import { Clase3 } from "../Clase-3/Clase3";
-import { Clase4 } from "../Clase-4/Clase4";
-import { Clase5 } from "../Clase-5/Clase5";
+import { useState } from "react";
+import { View } from "react-native";
+
+import { AddItem, CustomModal, TaskList } from "/components";
+
+import { styles } from "./styles";
 
 export const App = () => {
+	const [task, setTask] = useState();
+	const [tasks, setTasks] = useState([]);
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const [selectedTask, setSelectedTask] = useState();
+
+	const onHandlerChange = (text) => {
+		console.log("file: Clase5.js:20 ~ onHandlerChange ~ text", text);
+		setTask(text);
+	};
+
+	const onHandlerSubmit = () => {
+		setTasks([
+			...tasks,
+			{
+				id: Math.random().toString(),
+				value: task,
+			},
+		]);
+		setTask("");
+	};
+
+	const onHandleModal = (item) => {
+		setSelectedTask(item);
+		setIsModalVisible(!isModalVisible);
+	};
+
+	const onHandleDelete = () => {
+		setTasks((prevTaskList) =>
+			prevTaskList.filter((task) => task.id !== selectedTask.id)
+		);
+		setIsModalVisible(!isModalVisible);
+	};
+
 	return (
-		<Clase5 />
-		// <Clase4 />
-		// <Clase3 />
-		// <View style={styles.container}>
-		// 	<Text>Testing emulator 1</Text>
-		// 	<TouchableOpacity>
-		// 		<Text>Hola</Text>
-		// 	</TouchableOpacity>
-		// 	<Button
-		// 		onPress={() => alert("HOLA 1")}
-		// 		title="Learn More"
-		// 		style={styles.button}
-		// 		accessibilityLabel="Learn more about this purple button"
-		// 	/>
-		// 	<Pressable style={styles.button} onPress={() => alert("HOLA 2")}>
-		// 		<Text style={styles.text}>Button Pressable</Text>
-		// 	</Pressable>
-		// 	<Image
-		// 		source={{ uri: "https://picsum.photos/200/300" }}
-		// 		style={styles.stylesImg}
-		// 	/>
-		// 	<StatusBar style="auto" />
-		// </View>
+		<View style={styles.container}>
+			<AddItem
+				placeholder={"Add a new task"}
+				task={task}
+				onHandlerChange={onHandlerChange}
+				onHandlerSubmit={onHandlerSubmit}
+				buttonText={"ADD"}
+			/>
+			<TaskList
+				tasks={tasks}
+				onHandleModal={onHandleModal}
+				renderItem={TaskItem}
+				keyExtractor={keyExtractor}
+				style={styles.listContainer}
+			/>
+			<CustomModal
+				isModalVisible={isModalVisible}
+				setIsModalVisible={setIsModalVisible}
+				onHandleDelete={onHandleDelete}
+			/>
+		</View>
 	);
 };
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		backgroundColor: "#fff",
-		alignItems: "center",
-		justifyContent: "center",
-	},
-	stylesImg: {
-		width: 250,
-		height: 250,
-	},
-	button: {
-		alignItems: "center",
-		justifyContent: "center",
-		paddingVertical: 12,
-		paddingHorizontal: 32,
-		borderRadius: 4,
-		elevation: 3,
-		backgroundColor: "black",
-	},
-	text: {
-		fontSize: 16,
-		lineHeight: 21,
-		fontWeight: "bold",
-		letterSpacing: 0.25,
-		color: "white",
-	},
-});
