@@ -8,11 +8,11 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
-import { Clase3 } from "./Clase-3/Clase3";
-import { Clase4 } from "./Clase-4/Clase4";
-import { Clase5 } from "./Clase-5/Clase5";
+import { Clase3 } from "../Clase-3/Clase3";
+import { Clase4 } from "../Clase-4/Clase4";
+import { Clase5 } from "../Clase-5/Clase5";
 
-export default function App() {
+export const App = () => {
 	return (
 		<Clase5 />
 		// <Clase4 />
@@ -38,7 +38,7 @@ export default function App() {
 		// 	<StatusBar style="auto" />
 		// </View>
 	);
-}
+};
 
 const styles = StyleSheet.create({
 	container: {
