@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { View } from "react-native";
+import { styles } from "../styles";
 
-import { AddItem, CustomModal, TaskList } from "/components";
-
-import { styles } from "./styles";
+import { AddItem, CustomModal, TaskList } from "./components";
 
 export const App = () => {
 	const [task, setTask] = useState();
@@ -12,7 +11,6 @@ export const App = () => {
 	const [selectedTask, setSelectedTask] = useState();
 
 	const onHandlerChange = (text) => {
-		console.log("file: Clase5.js:20 ~ onHandlerChange ~ text", text);
 		setTask(text);
 	};
 
@@ -22,6 +20,7 @@ export const App = () => {
 			{
 				id: Math.random().toString(),
 				value: task,
+				complete: false,
 			},
 		]);
 		setTask("");
@@ -39,6 +38,10 @@ export const App = () => {
 		setIsModalVisible(!isModalVisible);
 	};
 
+	const onHandleStatus = (task) => {
+		task.complete = !task.complete;
+	};
+
 	return (
 		<View style={styles.container}>
 			<AddItem
@@ -51,14 +54,14 @@ export const App = () => {
 			<TaskList
 				tasks={tasks}
 				onHandleModal={onHandleModal}
-				renderItem={TaskItem}
-				keyExtractor={keyExtractor}
 				style={styles.listContainer}
 			/>
 			<CustomModal
 				isModalVisible={isModalVisible}
 				setIsModalVisible={setIsModalVisible}
 				onHandleDelete={onHandleDelete}
+				onHandleStatus={onHandleStatus}
+				selectedTask={selectedTask}
 			/>
 		</View>
 	);

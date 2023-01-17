@@ -1,4 +1,4 @@
-export { default as AddItem } from "./addItem/addItem";
-export { default as CustomModal } from "./Task/CustomModal/CustomModal";
-export { default as TaskItem } from "./Task/TaskItem/TaskItem";
-export { default as TaskList } from "./Task/TaskList/TaskList";
+export { AddItem } from "./AddItem/AddItem";
+export { CustomModal } from "./CustomModal/CustomModal";
+export { TaskItem } from "./Task/TaskItem/TaskItem";
+export { TaskList } from "./Task/TaskList/TaskList";

@@ -1,12 +1,16 @@
-import { TouchableOpacity } from "react-native";
-import { styles } from "../../../../Clase-5/styles";
+import { Text, TouchableOpacity } from "react-native";
+import { styles } from "../../../../styles";
 
-export const TaskItem = ({ item }) => {
+export const TaskItem = ({ item, onHandleModal }) => {
 	return (
 		<TouchableOpacity
-			style={styles.itemContainer}
+			style={
+				item.complete
+					? styles.itemContainerComplete
+					: styles.itemContainer
+			}
 			onPress={() => onHandleModal(item)}>
-			<Text style={styles.itemList}>{item.value}</Text>
+			<Text style={styles.itemList}>asda</Text>
 		</TouchableOpacity>
 	);
 };

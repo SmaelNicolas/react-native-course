@@ -1,5 +1,5 @@
 import { Button, TextInput, View } from "react-native";
-import { styles } from "../../../Clase-5/styles";
+import { styles } from "../../../styles";
 
 export const AddItem = ({
 	placeholder,
@@ -17,7 +17,7 @@ export const AddItem = ({
 				autoCorrect={false}
 				autoCapitalize="none"
 				value={task}
-				onChangeText={onHandlerChange}
+				onChangeText={(e) => onHandlerChange(e)}
 			/>
 			<Button
 				disabled={!task}
