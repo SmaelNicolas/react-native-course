@@ -8,7 +8,7 @@ export const App = () => {
 	const [task, setTask] = useState();
 	const [tasks, setTasks] = useState([]);
 	const [isModalVisible, setIsModalVisible] = useState(false);
-	const [selectedTask, setSelectedTask] = useState();
+	const [selectedTask, setSelectedTask] = useState({});
 
 	const onHandlerChange = (text) => {
 		setTask(text);
